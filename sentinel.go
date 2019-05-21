@@ -256,6 +256,8 @@ func (c *sentinelFailover) masterAddr() (string, error) {
 	for i, sentinelAddr := range c.sentinelAddrs {
 		sentinel := NewSentinelClient(&Options{
 			Addr: sentinelAddr,
+			//TODO the password is currently the same as the redis one, should be a different one
+			Password: c.opt.Password,
 
 			MaxRetries: c.opt.MaxRetries,
 
